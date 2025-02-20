@@ -140,10 +140,6 @@ class ShowNotesFragment : Fragment(), NotesAdapterItemClick {
                 putString("time", note.time)
             }
         }
-        val fragManager = requireActivity().supportFragmentManager  // Get fragment manager of the activity
-        val fragTransaction = fragManager.beginTransaction()
-        fragTransaction.replace(R.id.frameLayout, fragment)  // Replace the fragment inside the activity's FrameLayout
-        fragTransaction.addToBackStack(null)  // Optional: if you want to add this transaction to the back stack for navigation
-        fragTransaction.commit()
+        replaceFragment(fragment)
     }
 }
