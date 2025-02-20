@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black2"
+    tools:context=".fragment.ShowNotesFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black2"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_da"
+                android:text="Branch Notes"
+                android:textColor="@color/white2"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black3"
+            android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notesRecyclerView"
+            android:layout_weight="1"
+            tools:listitem="@layout/note_item_layout"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/makeNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Notes"
+        android:contentDescription="@string/extended_fab_content_desc"
+        android:backgroundTint="@color/white2"
+        android:textColor="@color/white3"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="sans-serif-light"
+        app:rippleColor="@color/white4"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/_20sdp"
+        app:icon="@drawable/baseline_add_24"
+        app:iconTint="@color/white3"
+        android:elevation="6dp"
+        android:layout_gravity="bottom|center_horizontal"/>
+</FrameLayout>

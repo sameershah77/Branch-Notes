@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_60sdp"
+        android:id="@+id/noteCard"
+        android:layout_margin="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_7sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_margin="@dimen/_4sdp"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Name" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@color/white5" />
+
+            <TextView
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white2"
+                android:id="@+id/desc"
+                android:layout_margin="@dimen/_4sdp"
+                android:text="content"
+                android:maxLines="7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
