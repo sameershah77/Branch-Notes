@@ -42,34 +42,38 @@ class AddNotesFragment : Fragment() {
         }
 
         binding.addNote.setOnClickListener {
-            val title = binding.title.text.toString()
-            val note = binding.note.text.toString()
-            val time = binding.time.text.toString()
-            if(title.isEmpty() && note.isEmpty()) {
-                binding.title.error = "Title is required"
-                binding.note.error = "Note is required"
-            }
-            else if(title.isEmpty()) {
-                binding.title.error = "Title is required"
-            } else if(note.isEmpty()) {
-                binding.note.error = "Note is required"
-            }
-            else {
-                binding.addNote.isEnabled = false
+            var title = binding.title.text.toString().trim()
+            val note = binding.note.text.toString().trim()
+            var time = binding.time.text.toString().trim()
 
-                val newNote = Notes(0, title, note, time)
+            if (note.isEmpty()) {
+                binding.note.error = "Note is required"
+                return@setOnClickListener
+            }
 
-                lifecycleScope.launch(Dispatchers.IO) {
+            binding.addNote.isEnabled = false
+
+            if (title.isEmpty()) {
+                title = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+            }
+
+            val newNote = Notes(0, title, note, time)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
                     notesViewModel.insertNote(newNote)
                     withContext(Dispatchers.Main) {
-                        // Re-enable FAB after insertion is done
-                        binding.addNote.isEnabled = true
-                        delay(500)
+                        delay(500) // Optional: Small delay before navigating
                         replaceFragment(ShowNotesFragment())
+                    }
+                } finally {
+                    withContext(Dispatchers.Main) {
+                        binding.addNote.isEnabled = true // Ensure button is always re-enabled
                     }
                 }
             }
         }
+
 
         return view
     }
